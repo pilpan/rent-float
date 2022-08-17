@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Edithouse from './Edithouse';
+import Footer from './Footer';
 import Login from './Login';
 import MainPage from './MainPage';
 import Navbar from './Navbar';
@@ -16,6 +17,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/houses/:id" element={<Edithouse />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
