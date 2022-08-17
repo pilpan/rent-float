@@ -1,7 +1,7 @@
-'use strict';
 const {
-  Model
+  Model,
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class favorite extends Model {
     /**
@@ -11,11 +11,13 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      this.hasMany(models.user, { foreignKey: 'id_user' });
+      this.hasMany(models.flat, { foreignKey: 'id_flat' });
     }
   }
   favorite.init({
     id_user: DataTypes.INTEGER,
-    id_flat: DataTypes.INTEGER
+    id_flat: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'favorite',
