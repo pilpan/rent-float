@@ -7,7 +7,7 @@ function Main({ authState }) {
       <p>
         Добро пожаловавть,
         {' '}
-        {authState ? `${authState.name}` : 'гость!'}
+        {authState ? `${authState.email}` : 'гость!'}
       </p>
     </div>
   );

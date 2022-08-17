@@ -16,7 +16,7 @@ export default function Login({ setAuthState }) {
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    const response = await fetch('/api/v1/login', {
+    const response = await fetch('/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',

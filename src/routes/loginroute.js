@@ -18,21 +18,20 @@ route.get('/login', async (req, res) => {
   }
 });
 
-route.post('/login', async (req, res) => {
+route.post('/', async (req, res) => {
   const databaseUser = await user.findOne({
     where: {
-      name: req.body.name,
+      email: req.body.email,
     },
   });
-  if (databaseUser && await bcrypt.compare(req.body.password, databaseUser.hashedPassword)) {
+
+  if (databaseUser && await bcrypt.compare(req.body.password, databaseUser.password)) {
     // res.json({ ...databaseStudent, hashedPassword: undefined });
     const sessionData = {
-      name: databaseUser.name,
       email: databaseUser.email,
       id: databaseUser.id,
     };
     // Object.assign(req.session, sessionData);
-    req.session.userName = databaseUser.name;
     req.session.useEemail = databaseUser.email;
     req.session.userId = databaseUser.id;
     res.json(sessionData);

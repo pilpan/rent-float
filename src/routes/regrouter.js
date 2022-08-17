@@ -23,12 +23,12 @@ route.post('/', async (req, res) => {
   const [currentUser, created] = await user.findOrCreate({
     where: { email: req.body.email },
     defaults: {
-      hashedPassword,
+      password: hashedPassword,
       email: req.body.email,
     },
   });
-  if (!created) res.json(currentUser);
-  else res.json(created);
+  if (!created) res.json({email: currentUser.email, id: currentUser.id});
+  else res.json({email: currentUser.email, id: currentUser.id});
 });
 
 route.get('/signup', async (req, res) => {

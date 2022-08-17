@@ -9,6 +9,7 @@ import Register from './Register';
 
 function App({ userSession }) {
   const [authState, setAuthState] = useState(userSession || null);
+  console.log(authState);
   return (
     <div className="container">
       <Navbar authState={authState} setAuthState={setAuthState} />
