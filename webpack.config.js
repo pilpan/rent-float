@@ -2,7 +2,7 @@ const path = require('path');
 
 const config = {
   entry: {
-    app: ['./src/components/index.jsx'],
+    app: ['./src/components/Index.jsx'],
   },
   output: {
     path: path.resolve(__dirname, 'public'),

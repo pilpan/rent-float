@@ -1,7 +1,7 @@
-'use strict';
 const {
-  Model
+  Model,
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class flat extends Model {
     /**
@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       this.hasMany(models.user, { foreignKey: 'id_user' });
       this.hasMany(models.flatCategories, { foreignKey: 'id_category' });
-      this.belongsTo(models.favorite,{foreignKey:"id_flat"})
+      this.belongsTo(models.favorite, { foreignKey: 'id_flat' });
     }
   }
   flat.init({
@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     img: DataTypes.STRING,
     coordinate: DataTypes.STRING,
     id_user: DataTypes.INTEGER,
-    id_category: DataTypes.INTEGER
+    id_category: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'flat',
