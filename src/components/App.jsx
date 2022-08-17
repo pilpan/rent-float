@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Edithouse from './Edithouse';
+import Favorite from './Favorite';
 import Login from './Login';
 import MainPage from './MainPage';
 import Navbar from './Navbar';
@@ -16,6 +17,7 @@ function App({ userSession }) {
         <Route path="/login" element={<Login setAuthState={setAuthState} />} />
         <Route path="/signup" element={<Register setAuthState={setAuthState} />} />
         <Route path="/houses/:id" element={<Edithouse />} />
+        <Route path="/favorite/:id" element={<Favorite />} />
       </Routes>
     </div>
   );

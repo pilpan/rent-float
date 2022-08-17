@@ -7,6 +7,7 @@ import React from 'react';
 import Layout from './components/Layout';
 import loginrouter from './routes/loginroute';
 import regrouter from './routes/regrouter';
+import favoriterouter from './routes/favoriterouter';
 // npm i express-session session-file-store
 const app = express();
 const PORT = 3000;
@@ -33,6 +34,7 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(session(sessionConfig));
 
+app.use('/favorite', favoriterouter);
 app.use('/login', loginrouter);
 app.use('/signup', regrouter);
 app.use('/users', regrouter)
