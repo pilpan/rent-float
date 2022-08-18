@@ -17,7 +17,6 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/houses/:id" element={<Edithouse />} />
       </Routes>
-      <Footer />
     </div>
   );
 }
