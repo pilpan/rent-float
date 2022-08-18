@@ -37,7 +37,7 @@ app.use(session(sessionConfig));
 app.use('/favorite', favoriterouter);
 app.use('/login', loginrouter);
 app.use('/signup', regrouter);
-app.use('/users', regrouter)
+app.use('/users', regrouter);
 app.get('/', async (req, res) => {
   try {
     const initState = { path: req.originalUrl };

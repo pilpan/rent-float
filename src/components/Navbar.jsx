@@ -3,7 +3,6 @@ import { NavLink, useNavigate } from 'react-router-dom';
 
 export default function Navbar({ authState, setAuthState }) {
   const navigate = useNavigate();
-
   const logoutHandler = async (e) => {
     e.preventDefault();
     const response = await fetch('/login/logout');
@@ -36,7 +35,10 @@ export default function Navbar({ authState, setAuthState }) {
                 <NavLink to="/login" className="btn btn-outline-success m-2">Login</NavLink>
               </>
             ) : (
-              <a onClick={logoutHandler} className="btn btn-logout-success m-2" href="logout">Logout</a>
+              <>
+                <NavLink to="/favorite/${authState.id}" className="btn btn-success m-2"><strong>favorite</strong></NavLink>
+                <a onClick={logoutHandler} className="btn btn-logout-success m-2" href="logout">Logout</a>
+              </>
             )}
         </div>
       </div>

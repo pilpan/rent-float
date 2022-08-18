@@ -27,6 +27,9 @@ export default function Login({ setAuthState }) {
       const data = await response.json();
       setAuthState(data);
       navigate('/');
+    } else {
+      alert('Вы не зарегестрировались или ввели непраивльные данные');
+      navigate('/signup');
     }
   };
 
