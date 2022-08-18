@@ -7,10 +7,9 @@ import { favorite, user, flat } from '../db/models';
 
 const route = express.Router();
 
-route.get('/:id', async (req, res) => {
+route.post('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    console.log(id);
     const fav = await favorite.findAll({
       include: [{
         model: user,
@@ -19,11 +18,7 @@ route.get('/:id', async (req, res) => {
         model: flat,
       }],
     });
-    console.log('отправил данные');
-    const initState = { path: req.originalUrl, data: fav };
-    const html = renderToString(<Layout initState={initState} />);
-    res.write('<!DOCTYPE html>');
-    res.end(html);
+    res.json(fav);
   } catch (err) {
     console.error(err);
   }
