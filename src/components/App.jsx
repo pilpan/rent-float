@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Edithouse from './Edithouse';
 import Favorite from './Favorite';
+import House from './House';
 import Login from './Login';
 import MainPage from './MainPage';
 import Navbar from './Navbar';
@@ -18,6 +19,7 @@ function App({ path, data, userSession }) {
         <Route path="/" element={<MainPage setDiscrFlat={setDiscrFlat} discrFlat={discrFlat} authState={authState} />} />
         <Route path="/login" element={<Login setAuthState={setAuthState} />} />
         <Route path="/signup" element={<Register setAuthState={setAuthState} />} />
+        <Route path="/houses/edit/:id" element={<House authState={authState} />} />
         <Route path="/houses/:id" element={<Edithouse authState={authState} setDiscrFlat={setDiscrFlat} />} />
         <Route path="/favorite/:id" element={<Favorite setDataState={setDataState} dataState={dataState} authState={authState} />} />
       </Routes>

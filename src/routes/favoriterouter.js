@@ -6,7 +6,6 @@ const route = express.Router();
 
 route.post('/:id', async (req, res) => {
   try {
-    const { id } = req.params;
     const fav = await favorite.findAll({
       include: [{
         model: user,

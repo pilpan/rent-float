@@ -46,7 +46,8 @@ app.use('/users', regrouter);
 
 app.get('/', async (req, res) => {
   try {
-    const initState = { path: req.originalUrl };
+    console.log(req.session);
+    const initState = { path: req.originalUrl, userSession: req.session.cookie.useEemail };
     const html = renderToString(<Layout initState={initState} />);
     res.write('<!DOCTYPE html>');
     res.end(html);
