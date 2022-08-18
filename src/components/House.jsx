@@ -1,23 +1,16 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
-export default function Edithouse({ authState, setDiscrFlat }) {
-  const navigate = useNavigate();
-  const submitHandler = async (e) => {
-    e.preventDefault();
-    const response = await fetch(`/houses/add/${authState.id}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(Object.fromEntries(new FormData(e.target))),
-    });
-    const data = await response.json();
-    setDiscrFlat((prev) => [...prev, data]);
-    navigate('/');
-  };
+export default function House({ authState }) {
+  const { id } = useParams();
+  const [info, infoSet] = useState(null);
+  useEffect(() => {
+    fetch(`/houses/edit/${id}`).then((res) => res.json()).then((data) => infoSet(data));
+  }, []);
   return (
     <div className="row justify-content-center">
       <div className="col-5">
-        <form onSubmit={submitHandler}>
+        <form>
           <div className="mb-3">
             <label htmlFor="loginName" className="form-label">Price</label>
             <input
@@ -64,7 +57,7 @@ export default function Edithouse({ authState, setDiscrFlat }) {
             />
           </div>
           <div className="row justify-content-center mt-3">
-            <button type="submit" className="btn btn-outline-success">AddHouse</button>
+            <button type="submit" className="btn btn-outline-success">Edit</button>
           </div>
         </form>
       </div>
