@@ -7,8 +7,8 @@ import MainPage from './MainPage';
 import Navbar from './Navbar';
 import Register from './Register';
 
-function App({ path, fav }) {
-  console.log(fav);
+function App({ path, data }) {
+  console.log(data);
   return (
     <div className="container">
       <Navbar />
@@ -17,7 +17,7 @@ function App({ path, fav }) {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/houses/:id" element={<Edithouse />} />
-        <Route path="/favorite/:id" element={<Favorite />} />
+        <Route path="/favorite/:id" element={<Favorite data={data} />} />
       </Routes>
     </div>
   );
