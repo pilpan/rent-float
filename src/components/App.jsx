@@ -8,7 +8,6 @@ import Navbar from './Navbar';
 import Register from './Register';
 
 function App({ path, fav }) {
-  console.log(fav);
   return (
     <div className="container">
       <Navbar />
