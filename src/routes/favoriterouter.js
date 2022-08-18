@@ -1,8 +1,5 @@
 /* eslint-disable react/jsx-filename-extension */
-import express, { json } from 'express';
-import { renderToString } from 'react-dom/server';
-import React from 'react';
-import Layout from '../components/Layout';
+import express from 'express';
 import { favorite, user, flat } from '../db/models';
 
 const route = express.Router();

@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-export default function MainPage({ authState }) {
-  const [discrFlat, setDiscrFlat] = useState([]);
-
+export default function MainPage({ setDiscrFlat, discrFlat, authState }) {
   useEffect(() => {
     fetch('http://localhost:3000/qwerty')
       .then((res) => res.json())

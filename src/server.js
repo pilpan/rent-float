@@ -9,7 +9,7 @@ import loginrouter from './routes/loginroute';
 import regrouter from './routes/regrouter';
 import favoriterouter from './routes/favoriterouter';
 import { flat } from './db/models';
-
+import houserouter from './routes/houserouter';
 // npm i express-session session-file-store
 const app = express();
 const PORT = 3000;
@@ -38,9 +38,8 @@ app.use(session(sessionConfig));
 
 app.use('/favorite', favoriterouter);
 app.use('/login', loginrouter);
-
+app.use('/houses', houserouter);
 app.use('/register', regrouter);
-
 
 app.use('/signup', regrouter);
 app.use('/users', regrouter);
