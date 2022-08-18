@@ -1,7 +1,16 @@
-import React from 'react'
+import React from 'react';
 
-export default function MainPage() {
+function Main({ authState }) {
   return (
-    <div>MainPage</div>
-  )
+    <div>
+      <h1></h1>
+      <p>
+        Добро пожаловавть,
+        {' '}
+        {authState ? `${authState.email}` : 'гость!'}
+      </p>
+    </div>
+  );
 }
+
+export default Main;
