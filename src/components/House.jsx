@@ -7,7 +7,6 @@ export default function House({ authState }) {
   useEffect(() => {
     fetch(`/houses/edit/${id}`).then((res) => res.json()).then((data) => infoSet(data));
   }, []);
-  console.log(info);
   return (
     <div className="row justify-content-center">
       <div className="col-5">

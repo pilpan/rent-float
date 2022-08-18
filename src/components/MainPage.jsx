@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function MainPage({ setDiscrFlat, discrFlat, authState }) {
-  const filtration = 1;
+  const filtration = -1;
   useEffect(() => {
     fetch('http://localhost:3000/qwerty')
       .then((res) => res.json())
@@ -16,9 +16,8 @@ export default function MainPage({ setDiscrFlat, discrFlat, authState }) {
         {' '}
         {authState ? `${authState.email}` : 'гость!'}
       </p>
-      <ul className="list-group list-group-horizontal">
-        {discrFlat && discrFlat.map((el) => el.id_category === filtration
-          && (
+      <ul className="d-flex flex-wrap justify-content-around">
+        {discrFlat && discrFlat.map((el) => (
           <li className="list-group-item">
             <div className="card" style={{ width: '18rem', height: '30rem' }}>
               <img src={el.img} className="img-thumbnail" alt="..." />
@@ -35,8 +34,9 @@ export default function MainPage({ setDiscrFlat, discrFlat, authState }) {
               </div>
             </div>
           </li>
-          ))}
+        ))}
       </ul>
+
     </div>
   );
 }
