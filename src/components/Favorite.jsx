@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
-export default function Favorite({ data }) {
-  console.log(data[0]);
+export default function Favorite({ dataState, authState, setDataState }) {
+  const { id } = useParams();
+  const [favState, setFavState] = useState(dataState || null);
+  useEffect(() => {
+    fetch(`/favorite/${id}`).then((res) => res.json()).then((data) => setFavState(data));
+  }, []);
+
+  console.log(favState);
   return (
-    <div>Favorite</div>
+    <div>favorite</div>
   );
 }

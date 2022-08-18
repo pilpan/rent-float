@@ -7,10 +7,9 @@ import MainPage from './MainPage';
 import Navbar from './Navbar';
 import Register from './Register';
 
-
-function App({ path,data,userSession }) {
+function App({ path, data, userSession }) {
   const [authState, setAuthState] = useState(userSession || null);
-  console.log(authState);
+  const [dataState, setDataState] = useState(data || null);
   return (
     <div className="container">
       <Navbar authState={authState} setAuthState={setAuthState} />
@@ -19,7 +18,7 @@ function App({ path,data,userSession }) {
         <Route path="/login" element={<Login setAuthState={setAuthState} />} />
         <Route path="/signup" element={<Register setAuthState={setAuthState} />} />
         <Route path="/houses/:id" element={<Edithouse />} />
-        <Route path="/favorite/:id" element={<Favorite data={data} />} />
+        <Route path="/favorite/:id" element={<Favorite setDataState={setDataState} dataState={dataState} authState={authState} />} />
       </Routes>
     </div>
   );

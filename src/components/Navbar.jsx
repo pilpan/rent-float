@@ -36,7 +36,7 @@ export default function Navbar({ authState, setAuthState }) {
               </>
             ) : (
               <>
-                <NavLink to="/favorite/${authState.id}" className="btn btn-success m-2"><strong>favorite</strong></NavLink>
+                <NavLink to={`/favorite/${authState.id}`} className="btn btn-success m-2"><strong>favorite</strong></NavLink>
                 <a onClick={logoutHandler} className="btn btn-logout-success m-2" href="logout">Logout</a>
               </>
             )}
