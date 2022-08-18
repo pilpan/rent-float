@@ -10,6 +10,7 @@ const route = express.Router();
 route.get('/:id', async (req, res) => {
   try {
     const { id } = req.params;
+    console.log(id);
     const fav = await favorite.findAll({
       include: [{
         model: user,
@@ -18,8 +19,8 @@ route.get('/:id', async (req, res) => {
         model: flat,
       }],
     });
-    console.log(JSON.parse(JSON.stringify(fav)));
-    const initState = { path: req.originalUrl, fav };
+    console.log('отправил данные');
+    const initState = { path: req.originalUrl, data: fav };
     const html = renderToString(<Layout initState={initState} />);
     res.write('<!DOCTYPE html>');
     res.end(html);

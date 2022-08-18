@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 
 export default function MainPage() {
@@ -32,5 +33,17 @@ export default function MainPage() {
       ))}
     </ul>
 
+function Main({ authState }) {
+  return (
+    <div>
+      <h1></h1>
+      <p>
+        Добро пожаловавть,
+        {' '}
+        {authState ? `${authState.email}` : 'гость!'}
+      </p>
+    </div>
   );
 }
+
+export default Main;
