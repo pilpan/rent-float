@@ -12,11 +12,12 @@ function App({ path, data, userSession }) {
   const [authState, setAuthState] = useState(userSession || null);
   const [dataState, setDataState] = useState(data || null);
   const [discrFlat, setDiscrFlat] = useState([]);
+  const [flat, setFlat] = useState('');
   return (
     <div className="container">
-      <Navbar authState={authState} setAuthState={setAuthState} />
+      <Navbar authState={authState} setAuthState={setAuthState} flat={flat} setFlat={setFlat} />
       <Routes>
-        <Route path="/" element={<MainPage setDiscrFlat={setDiscrFlat} discrFlat={discrFlat} authState={authState} />} />
+        <Route path="/" element={<MainPage setDiscrFlat={setDiscrFlat} discrFlat={discrFlat} authState={authState} flat={flat} setFlat={setFlat} />} />
         <Route path="/login" element={<Login setAuthState={setAuthState} />} />
         <Route path="/signup" element={<Register setAuthState={setAuthState} />} />
         <Route path="/houses/edit/:id" element={<House authState={authState} />} />

@@ -1,7 +1,9 @@
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 
-export default function Navbar({ authState, setAuthState }) {
+export default function Navbar({
+  authState, setAuthState, flat, setFlat
+}) {
   const navigate = useNavigate();
   const logoutHandler = async (e) => {
     e.preventDefault();
@@ -10,6 +12,11 @@ export default function Navbar({ authState, setAuthState }) {
       setAuthState(null);
       navigate('/');
     }
+  };
+
+  const changeFlat = (e) => {
+    setFlat(e.target.value);
+    console.log(flat);
   };
 
   return (
@@ -28,8 +35,8 @@ export default function Navbar({ authState, setAuthState }) {
             </li>
           </ul>
 
-          <select className="form-select w-25 position-relative" aria-label="Default select example">
-            <option selected>Categories</option>
+          <select onChange={changeFlat} className="form-select w-25 position-relative" aria-label="Default select example">
+            <option>Categories</option>
             <option value="1">One</option>
             <option value="2">Two</option>
           </select>
