@@ -7,6 +7,8 @@ import MainPage from './MainPage';
 import Navbar from './Navbar';
 import Register from './Register';
 
+
+function App({ path, fav }) {
 function App({ path, data, userSession }) {
   const [authState, setAuthState] = useState(userSession || null);
   const [dataState, setDataState] = useState(data || null);

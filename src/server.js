@@ -8,6 +8,8 @@ import Layout from './components/Layout';
 import loginrouter from './routes/loginroute';
 import regrouter from './routes/regrouter';
 import favoriterouter from './routes/favoriterouter';
+import { flat } from './db/models';
+
 // npm i express-session session-file-store
 const app = express();
 const PORT = 3000;
@@ -36,8 +38,13 @@ app.use(session(sessionConfig));
 
 app.use('/favorite', favoriterouter);
 app.use('/login', loginrouter);
+
+app.use('/register', regrouter);
+
+
 app.use('/signup', regrouter);
 app.use('/users', regrouter);
+
 app.get('/', async (req, res) => {
   try {
     const initState = { path: req.originalUrl };
@@ -48,6 +55,7 @@ app.get('/', async (req, res) => {
     console.error(err);
   }
 });
+
 app.get('/houses/:id', async (req, res) => {
   try {
     const initState = { path: req.originalUrl };
@@ -57,6 +65,11 @@ app.get('/houses/:id', async (req, res) => {
   } catch (err) {
     console.error(err);
   }
+});
+
+app.get('/qwerty', async (req, res) => {
+  const list = await flat.findAll();
+  res.json(list);
 });
 
 app.listen(PORT, () => console.log(`Server is started on port ${PORT}`));
