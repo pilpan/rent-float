@@ -9,7 +9,7 @@ import loginrouter from './routes/loginroute';
 import regrouter from './routes/regrouter';
 import favoriterouter from './routes/favoriterouter';
 import { flat } from './db/models';
-
+import authCheck from './components/middlewares/authCheck';
 // npm i express-session session-file-store
 const app = express();
 const PORT = 3000;
@@ -35,17 +35,18 @@ app.use(express.json());
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(session(sessionConfig));
+// app.use(authCheck);
 
 app.use('/favorite', favoriterouter);
 app.use('/login', loginrouter);
-
-app.use('/register', regrouter);
-
+// app.use('/register', regrouter);
 
 app.use('/signup', regrouter);
-app.use('/users', regrouter);
+
+// app.use('/users', regrouter);
 
 app.get('/', async (req, res) => {
+  console.log(req.session);
   try {
     const initState = { path: req.originalUrl };
     const html = renderToString(<Layout initState={initState} />);

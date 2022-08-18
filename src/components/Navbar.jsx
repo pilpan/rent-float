@@ -28,6 +28,11 @@ export default function Navbar({ authState, setAuthState }) {
             </li>
           </ul>
 
+          <select className="form-select w-25 position-relative" aria-label="Default select example">
+            <option selected>Categories</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+          </select>
           {!authState
             ? (
               <>
@@ -37,6 +42,7 @@ export default function Navbar({ authState, setAuthState }) {
             ) : (
               <>
                 <NavLink to={`/favorite/${authState.id}`} className="btn btn-success m-2"><strong>favorite</strong></NavLink>
+
                 <a onClick={logoutHandler} className="btn btn-logout-success m-2" href="logout">Logout</a>
               </>
             )}

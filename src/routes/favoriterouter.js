@@ -7,7 +7,7 @@ import { favorite, user, flat } from '../db/models';
 
 const route = express.Router();
 
-route.get('/:id', async (req, res) => {
+route.post('/:id', async (req, res) => {
   try {
     const { id } = req.params;
     console.log(id);

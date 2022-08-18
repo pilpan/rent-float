@@ -4,10 +4,11 @@ import { renderToString } from 'react-dom/server';
 import React from 'react';
 import Layout from '../components/Layout';
 import { user } from '../db/models';
+import authCheck from '../components/middlewares/authCheck';
 
 const route = express.Router();
 
-route.get('/login', async (req, res) => {
+route.get('/', authCheck, async (req, res) => {
   try {
     const initState = { path: req.originalUrl, userSession: req.session.userSession };
     const html = renderToString(<Layout initState={initState} />);
@@ -24,7 +25,6 @@ route.post('/', async (req, res) => {
       email: req.body.email,
     },
   });
-
   if (databaseUser && await bcrypt.compare(req.body.password, databaseUser.password)) {
     // res.json({ ...databaseStudent, hashedPassword: undefined });
     const sessionData = {

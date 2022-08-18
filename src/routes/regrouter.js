@@ -27,19 +27,8 @@ route.post('/', async (req, res) => {
       email: req.body.email,
     },
   });
-  if (!created) res.json({email: currentUser.email, id: currentUser.id});
-  else res.json({email: currentUser.email, id: currentUser.id});
-});
-
-route.get('/signup', async (req, res) => {
-  try {
-    const initState = { path: req.originalUrl, userSession: req.session.userSession };
-    const html = renderToString(<Layout initState={initState} />);
-    res.write('<!DOCTYPE html>');
-    res.end(html);
-  } catch (err) {
-    console.error('blyat');
-  }
+  if (!created) res.sendStatus(405);
+  else res.json({ email: currentUser.email, id: currentUser.id });
 });
 
 export default route;
