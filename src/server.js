@@ -9,6 +9,8 @@ import loginrouter from './routes/loginroute';
 import regrouter from './routes/regrouter';
 import favoriterouter from './routes/favoriterouter';
 import { flat } from './db/models';
+import houserouter from './routes/houserouter';
+import authCheck from './components/middlewares/authCheck';
 
 // npm i express-session session-file-store
 const app = express();
@@ -35,19 +37,32 @@ app.use(express.json());
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(session(sessionConfig));
+// app.use(authCheck);
 
 app.use('/favorite', favoriterouter);
 app.use('/login', loginrouter);
 
+app.use('/houses', houserouter);
 app.use('/register', regrouter);
-
+// app.use('/register', regrouter);
 
 app.use('/signup', regrouter);
-app.use('/users', regrouter);
 
-app.get('/', async (req, res) => {
+// app.use('/users', regrouter);
+app.get('/appData/:id', async (req, res) => {
   try {
-    const initState = { path: req.originalUrl };
+    if (req.params.id === 'Categories') { res.sendStatus(201); }
+    const data = await flat.findAll({ where: { id_category: Number(req.params.id) } });
+    res.json(data);
+  } catch (err) {
+    console.error(err);
+  }
+});
+app.get('/', async (req, res) => {
+  console.log(req.session);
+  try {
+    console.log(req.session);
+    const initState = { path: req.originalUrl, userSession: req.session.cookie.useEemail };
     const html = renderToString(<Layout initState={initState} />);
     res.write('<!DOCTYPE html>');
     res.end(html);

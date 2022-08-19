@@ -1,17 +1,25 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
-export default function Edithouse({ authState, setDiscrFlat }) {
+export default function House({ discrFlat, setDiscrFlat, authState }) {
+  const { id } = useParams();
   const navigate = useNavigate();
+  const [info, infoSet] = useState(discrFlat[id - 1]);
+  useEffect(() => {
+    fetch(`/houses/pulledit/${id}`).then((res) => res.json()).then((data) => infoSet(data));
+  }, []);
+  const changeHandler = (e) => {
+    infoSet((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
   const submitHandler = async (e) => {
     e.preventDefault();
-    const response = await fetch(`/houses/add/${authState.id}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(Object.fromEntries(new FormData(e.target))),
+    await fetch(`/houses/edit/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(info),
     });
-    const data = await response.json();
-    setDiscrFlat((prev) => [...prev, data]);
     navigate('/');
   };
   return (
@@ -21,8 +29,10 @@ export default function Edithouse({ authState, setDiscrFlat }) {
           <div className="mb-3">
             <label htmlFor="loginName" className="form-label">Price</label>
             <input
-              type="Price"
-              name="Price"
+              type="price"
+              name="price"
+              onChange={changeHandler}
+              value={info.price}
               className="form-control"
               id="loginName"
             />
@@ -31,7 +41,9 @@ export default function Edithouse({ authState, setDiscrFlat }) {
             <label htmlFor="loginName" className="form-label">Description</label>
             <input
               type="Description"
-              name="Description"
+              name="descriptions"
+              onChange={changeHandler}
+              value={info.descriptions}
               className="form-control"
               id="loginName"
             />
@@ -40,7 +52,9 @@ export default function Edithouse({ authState, setDiscrFlat }) {
             <label htmlFor="loginName" className="form-label">Adress</label>
             <input
               type="Adress"
-              name="Adress"
+              name="coordinate"
+              onChange={changeHandler}
+              value={info.coordinate}
               className="form-control"
               id="loginName"
             />
@@ -49,7 +63,9 @@ export default function Edithouse({ authState, setDiscrFlat }) {
             <label htmlFor="loginName" className="form-label">Image</label>
             <input
               type="Adress"
-              name="Image"
+              name="img"
+              onChange={changeHandler}
+              value={info.img}
               className="form-control"
               id="loginName"
             />
@@ -59,12 +75,14 @@ export default function Edithouse({ authState, setDiscrFlat }) {
             <input
               type="Adress"
               name="Category"
+              onChange={changeHandler}
+              value="Дом"
               className="form-control"
               id="loginName"
             />
           </div>
           <div className="row justify-content-center mt-3">
-            <button type="submit" className="btn btn-outline-success">AddHouse</button>
+            <button type="submit" className="btn btn-outline-success">Edit</button>
           </div>
         </form>
       </div>

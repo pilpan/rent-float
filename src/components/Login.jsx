@@ -28,8 +28,8 @@ export default function Login({ setAuthState }) {
       setAuthState(data);
       navigate('/');
     } else {
-      alert('Вы не зарегестрировались или ввели непраивльные данные');
-      navigate('/signup');
+     setError('Вы не зарегестрировались или ввели непраивльные данные');
+      // navigate('/signup');
     }
   };
 
@@ -61,6 +61,7 @@ export default function Login({ setAuthState }) {
           </div>
           <div className="row justify-content-center mt-3">
             <button type="submit" className="btn btn-outline-success">Login</button>
+            {/* <button type="button" onClick={() => setError(true)}>Test</button> */}
             {error && <div style={{ color: 'red', background: 'yellow' }}>Password is incorrect</div>}
           </div>
         </form>
