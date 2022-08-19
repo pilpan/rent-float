@@ -19,7 +19,6 @@ export default function MainPage({ setDiscrFlat, discrFlat, authState }) {
       <ul className="d-flex flex-wrap justify-content-around">
         {discrFlat && discrFlat.map((el) => <Page el={el} authState={authState} />)}
       </ul>
-
     </div>
   );
 }

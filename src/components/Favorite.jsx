@@ -15,7 +15,12 @@ export default function Favorite({ dataState, authState, setDataState }) {
     <ul className="d-flex flex-wrap justify-content-around">
       {favState && favState.map((el) => (
         <li className="list-group-item">
-          <div className="card" style={{ width: '18rem', height: '30rem' }}>
+          <div
+            className="card"
+            style={{
+              width: '18rem', height: '30rem', borderWidth: '0.5', borderColor: 'darkgrey', boxShadow: '11px 14px 9px 1px  silver'
+            }}
+          >
             <img src={el.flat.img} className="img-thumbnail" alt="..." />
             <div className="card-body">
               <h5 className="card-title">
@@ -26,7 +31,6 @@ export default function Favorite({ dataState, authState, setDataState }) {
               </h5>
               <p className="card-text">{el.flat.descriptions}</p>
               <p className="card-text">{el.flat.coordinate}</p>
-              <a href="/" className="btn btn-primary">Подробнее</a>
             </div>
           </div>
         </li>
