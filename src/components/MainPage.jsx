@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+
 export default function MainPage({ setDiscrFlat, discrFlat, authState }) {
   const [buttonState, buttonSetState] = useState(true);
   const filtration = -1;
@@ -9,13 +10,13 @@ export default function MainPage({ setDiscrFlat, discrFlat, authState }) {
       .then((res) => res.json())
       .then((data) => setDiscrFlat(data));
   }, []);
+
   const addHandler = async (e, id) => {
     e.preventDefault();
     await fetch(`/favorite/add/${id}`, { method: 'PUT' });
   };
   return (
     <div>
-      <h1 />
       <p>
         Добро пожаловавть,
         {' '}
@@ -30,7 +31,7 @@ export default function MainPage({ setDiscrFlat, discrFlat, authState }) {
                 <h5 className="card-title">
                   Цена:
                   {' '}
-                  {el.price }
+                  {el.price}
                   ₽
                 </h5>
                 <p className="card-text">{el.descriptions}</p>

@@ -1,7 +1,9 @@
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 
-export default function Navbar({ authState, setAuthState }) {
+export default function Navbar({
+  authState, setAuthState, discrFlat, setDiscrFlat
+}) {
   const navigate = useNavigate();
   const logoutHandler = async (e) => {
     e.preventDefault();
@@ -10,6 +12,15 @@ export default function Navbar({ authState, setAuthState }) {
       setAuthState(null);
       navigate('/');
     }
+  };
+
+  const changeFlat = async (e) => {
+    console.log(e.target.value);
+    const response = await fetch(`/appdata/${e.target.value}`);
+    if (!response.ok) return;
+    const data = await response.json();
+    console.log(data);
+    setDiscrFlat(data);
   };
 
   return (
@@ -28,6 +39,11 @@ export default function Navbar({ authState, setAuthState }) {
             </li>
           </ul>
 
+          <select onChange={changeFlat} className="form-select w-25 position-relative" aria-label="Default select example">
+            <option>Categories</option>
+            <option value="1">Аппартаменты</option>
+            <option value="2">Квартиры</option>
+          </select>
           {!authState
             ? (
               <>
@@ -38,6 +54,7 @@ export default function Navbar({ authState, setAuthState }) {
               <>
                 <NavLink to={`/houses/${authState.id}`} className="btn btn-success m-2"><strong>addHouse</strong></NavLink>
                 <NavLink to={`/favorite/${authState.id}`} className="btn btn-success m-2"><strong>favorite</strong></NavLink>
+
                 <a onClick={logoutHandler} className="btn btn-logout-success m-2" href="logout">Logout</a>
               </>
             )}

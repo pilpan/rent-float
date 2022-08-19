@@ -22,6 +22,8 @@ export default function Register({ setAuthState }) {
       const data = await response.json();
       setAuthState(data);
       navigate('/');
+    } else {
+      setError('Вы уже зарегестрированы');
     }
   };
   const changeHandler = (e) => {

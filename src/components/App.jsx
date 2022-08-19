@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, Route, Routes } from 'react-router-dom';
 import Edithouse from './Edithouse';
 import Favorite from './Favorite';
 import House from './House';
@@ -12,10 +12,14 @@ function App({ path, data, userSession }) {
   const [authState, setAuthState] = useState(userSession || null);
   const [dataState, setDataState] = useState(data || null);
   const [discrFlat, setDiscrFlat] = useState([]);
-  console.log(discrFlat);
   return (
     <div className="container">
-      <Navbar authState={authState} setAuthState={setAuthState} />
+      <Navbar
+        authState={authState}
+        setAuthState={setAuthState}
+        discrFlat={discrFlat}
+        setDiscrFlat={setDiscrFlat}
+      />
       <Routes>
         <Route path="/" element={<MainPage setDiscrFlat={setDiscrFlat} discrFlat={discrFlat} authState={authState} />} />
         <Route path="/login" element={<Login setAuthState={setAuthState} />} />
