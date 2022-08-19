@@ -13,11 +13,11 @@ export default function Page({ el, authState }) {
       <div
         className="card"
         style={{
-          width: '18rem', height: '30rem', borderWidth: '0.5', borderColor: 'darkgrey', boxShadow: '11px 14px 9px 1px  silver'
+          width: '25rem', height: '30rem', borderWidth: '0.5', borderColor: 'darkgrey', boxShadow: '11px 14px 9px 1px  silver'
         }}
       >
         <img src={el.img} className="img-thumbnail" alt="..." />
-        <div className="card-body">
+        <div className="card-body d-flex flex-column justify-content-end">
           <h5 className="card-title">
             Цена:
             {' '}
