@@ -62,10 +62,9 @@ app.get('/appData/:id', async (req, res) => {
   }
 });
 app.get('/', async (req, res) => {
-  console.log(req.session);
   try {
-    console.log(req.session);
-    const initState = { path: req.originalUrl, userSession: req.session.cookie.useEemail };
+    console.log(req.session.userSession);
+    const initState = { path: req.originalUrl, userSession: req.session.userSession };
     const html = renderToString(<Layout initState={initState} />);
     res.write('<!DOCTYPE html>');
     res.end(html);

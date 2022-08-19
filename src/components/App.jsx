@@ -12,6 +12,7 @@ function App({ path, data, userSession }) {
   const [authState, setAuthState] = useState(userSession || null);
   const [dataState, setDataState] = useState(data || null);
   const [discrFlat, setDiscrFlat] = useState([]);
+  console.log(userSession);
   return (
     <div className="container">
       <Navbar
