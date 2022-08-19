@@ -12,7 +12,7 @@ export default function Favorite({ dataState, authState, setDataState }) {
   }, []);
   console.log(favState);
   return (
-    <ul className="list-group list-group-horizontal">
+    <ul className="d-flex flex-wrap justify-content-around">
       {favState && favState.map((el) => (
         <li className="list-group-item">
           <div className="card" style={{ width: '18rem', height: '30rem' }}>

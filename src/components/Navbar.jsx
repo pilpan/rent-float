@@ -17,9 +17,8 @@ export default function Navbar({
   const changeFlat = async (e) => {
     console.log(e.target.value);
     const response = await fetch(`/appdata/${e.target.value}`);
-    if (!response.ok) return;
+
     const data = await response.json();
-    console.log(data);
     setDiscrFlat(data);
   };
 
