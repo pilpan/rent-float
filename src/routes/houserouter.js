@@ -21,13 +21,35 @@ route.post('/add/:id', async (req, res) => {
     console.error(err);
   }
 });
-route.get('/edit/:id', async (req, res) => {
+route.get('/pulledit/:id', async (req, res) => {
   try {
     const findFlat = await flat.findAll({
       include: { model: user },
       where: { id: req.params.id },
     });
-    console.log(JSON.parse(JSON.stringify(findFlat)));
+  } catch (err) {
+    console.error(err);
+  }
+});
+
+route.put('/edit/:id', async (req, res) => {
+  try {
+    const newFlat = await flat.update(
+      {
+        price: req.body.price,
+        descriptions: req.body.descriptions,
+        img: req.body.img,
+        coordinate: req.body.coordinate,
+        id_user: req.body.id_user,
+        id_category: req.body.id_category,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        where: { id: req.params.id },
+      },
+    );
+    res.sendStatus(200);
   } catch (err) {
     console.error(err);
   }

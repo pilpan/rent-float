@@ -1,6 +1,7 @@
 import React from 'react';
 import { StaticRouter } from 'react-router-dom/server';
 import App from './App';
+import Footer from './Footer';
 
 function Layout({ initState }) {
   return (
@@ -23,6 +24,7 @@ function Layout({ initState }) {
             <App {...initState} />
           </StaticRouter>
         </div>
+        <Footer />
       </body>
     </html>
   );

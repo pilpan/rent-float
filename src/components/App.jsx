@@ -12,9 +12,6 @@ function App({ path, data, userSession }) {
   const [authState, setAuthState] = useState(userSession || null);
   const [dataState, setDataState] = useState(data || null);
   const [discrFlat, setDiscrFlat] = useState([]);
-  // useEffect(() => {
-    
-  // }, [discrFlat]);
   return (
     <div className="container">
       <Navbar
@@ -27,7 +24,7 @@ function App({ path, data, userSession }) {
         <Route path="/" element={<MainPage setDiscrFlat={setDiscrFlat} discrFlat={discrFlat} authState={authState} />} />
         <Route path="/login" element={<Login setAuthState={setAuthState} />} />
         <Route path="/signup" element={<Register setAuthState={setAuthState} />} />
-        <Route path="/houses/edit/:id" element={<House authState={authState} />} />
+        <Route path="/houses/edit/:id" element={<House discrFlat={discrFlat} setDiscrFlat={setDiscrFlat} authState={authState} />} />
         <Route path="/houses/:id" element={<Edithouse authState={authState} setDiscrFlat={setDiscrFlat} />} />
         <Route path="/favorite/:id" element={<Favorite setDataState={setDataState} dataState={dataState} authState={authState} />} />
       </Routes>
