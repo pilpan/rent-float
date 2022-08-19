@@ -21,10 +21,9 @@ route.post('/:id', async (req, res) => {
 });
 route.put('/add/:id', async (req, res) => {
   try {
-    console.log(req.params.id);
     const newFav = await favorite.create({
-      id_user: req.params.id,
-      id_flat: req.session.userId,
+      id_user: req.session.userId,
+      id_flat: req.params.id,
       createdAt: new Date(),
       updatedAt: new Date(),
     });

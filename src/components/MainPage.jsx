@@ -18,7 +18,7 @@ export default function MainPage({ setDiscrFlat, discrFlat, authState }) {
   return (
     <div>
       <p>
-        Добро пожаловавть,
+        Добро пожаловать,
         {' '}
         {authState ? `${authState.email}` : 'гость!'}
       </p>
@@ -36,8 +36,10 @@ export default function MainPage({ setDiscrFlat, discrFlat, authState }) {
                 </h5>
                 <p className="card-text">{el.descriptions}</p>
                 <p className="card-text">{el.coordinate}</p>
-                <Link to={`/houses/edit/${el.id}`} className="btn btn-primary">Подробнее</Link>
-                <button style={{ disabled: !buttonState }} onClick={(e) => addHandler(e, el.id)} to={`/favorite/add/${el.id}`} type="submit" className="btn btn-success">Добавить в избранное</button>
+                <div className="d-grid gap-2 d-md-flex justify-content-md-right">
+                  <Link to={`/houses/edit/${el.id}`} className="btn btn-secondary">Подробнее</Link>
+                  <button style={{ disabled: !buttonState }} onClick={(e) => addHandler(e, el.id)} to={`/favorite/add/${el.id}`} type="submit" className="btn btn-success">Добавить в избранное</button>
+                </div>
               </div>
             </div>
           </li>

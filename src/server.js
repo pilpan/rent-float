@@ -51,7 +51,10 @@ app.use('/signup', regrouter);
 // app.use('/users', regrouter);
 app.get('/appData/:id', async (req, res) => {
   try {
-    if (req.params.id === 'Categories') { res.sendStatus(201); }
+    if (req.params.id === 'Categories') {
+      const data = await flat.findAll();
+      res.json(data);
+    }
     const data = await flat.findAll({ where: { id_category: Number(req.params.id) } });
     res.json(data);
   } catch (err) {
