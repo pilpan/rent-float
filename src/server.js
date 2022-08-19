@@ -46,11 +46,18 @@ app.use('/houses', houserouter);
 app.use('/register', regrouter);
 // app.use('/register', regrouter);
 
-
 app.use('/signup', regrouter);
 
 // app.use('/users', regrouter);
-
+app.get('/appData/:id', async (req, res) => {
+  try {
+    if (req.params.id === 'Categories') { res.sendStatus(201); }
+    const data = await flat.findAll({ where: { id_category: Number(req.params.id) } });
+    res.json(data);
+  } catch (err) {
+    console.error(err);
+  }
+});
 app.get('/', async (req, res) => {
   console.log(req.session);
   try {

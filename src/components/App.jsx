@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, Route, Routes } from 'react-router-dom';
 import Edithouse from './Edithouse';
 import Favorite from './Favorite';
 import House from './House';
@@ -12,12 +12,19 @@ function App({ path, data, userSession }) {
   const [authState, setAuthState] = useState(userSession || null);
   const [dataState, setDataState] = useState(data || null);
   const [discrFlat, setDiscrFlat] = useState([]);
-  const [flat, setFlat] = useState('');
+  // useEffect(() => {
+    
+  // }, [discrFlat]);
   return (
     <div className="container">
-      <Navbar authState={authState} setAuthState={setAuthState} flat={flat} setFlat={setFlat} />
+      <Navbar
+        authState={authState}
+        setAuthState={setAuthState}
+        discrFlat={discrFlat}
+        setDiscrFlat={setDiscrFlat}
+      />
       <Routes>
-        <Route path="/" element={<MainPage setDiscrFlat={setDiscrFlat} discrFlat={discrFlat} authState={authState} flat={flat} setFlat={setFlat} />} />
+        <Route path="/" element={<MainPage setDiscrFlat={setDiscrFlat} discrFlat={discrFlat} authState={authState} />} />
         <Route path="/login" element={<Login setAuthState={setAuthState} />} />
         <Route path="/signup" element={<Register setAuthState={setAuthState} />} />
         <Route path="/houses/edit/:id" element={<House authState={authState} />} />
