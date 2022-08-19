@@ -32,8 +32,7 @@ route.post('/', async (req, res) => {
       id: databaseUser.id,
     };
     // Object.assign(req.session, sessionData);
-    req.session.useEmail = databaseUser.email;
-    req.session.userId = databaseUser.id;
+    req.session.userSession = sessionData;
     res.json(sessionData);
   } else res.sendStatus(401);
 });
