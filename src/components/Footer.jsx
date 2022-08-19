@@ -29,21 +29,21 @@ export default function Footer() {
                 {' '}
                 Адрес:
                 {' '}
-                <a href="https://www.google.ru/" className="btn btn-success "> ул. Цветной бульвар дом 2</a>
+                <a href="https://www.google.ru/" className="btn btn-secondary "> ул. Цветной бульвар дом 2</a>
               </p>
               <p>
                 <i className="fas fa-envelope me-0 text-grayish" />
                 {' '}
                 Почта:
                 {' '}
-                <a href="mailto:best.flats@mail.ru" className="btn btn-success ">best.flats@mail.ru</a>
+                <a href="mailto:best.flats@mail.ru" className="btn btn-secondary ">best.flats@mail.ru</a>
               </p>
               <p>
                 <i className="fas fa-phone me-0 text-grayish" />
                 {' '}
                 Телефон:
                 {' '}
-                <a href="tel:+74999386824" className="footer-module--telLink--X0ICB btn btn-success "> +7 499 938-68-24</a>
+                <a href="tel:+74999386824" className="footer-module--telLink--X0ICB btn btn-secondary "> +7 499 938-68-24</a>
               </p>
             </div>
           </div>

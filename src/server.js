@@ -16,7 +16,7 @@ import authCheck from './components/middlewares/authCheck';
 const app = express();
 const PORT = 3000;
 
-// require('dotenv').config();
+require('dotenv').config();
 
 const FileStore = store(session);
 
@@ -51,7 +51,7 @@ app.use('/signup', regrouter);
 // app.use('/users', regrouter);
 app.get('/appData/:id', async (req, res) => {
   try {
-    if (req.params.id === 'Categories') {
+    if (req.params.id === 'Категории') {
       const data = await flat.findAll();
       res.json(data);
     }

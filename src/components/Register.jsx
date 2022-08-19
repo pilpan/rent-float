@@ -35,7 +35,7 @@ export default function Register({ setAuthState }) {
         <form onSubmit={submitHandler}>
 
           <div className="mb-3">
-            <label htmlFor="signupName" className="form-label">Email</label>
+            <label htmlFor="signupName" className="form-label">Почта</label>
             <input
               value={input.email}
               onChange={changeHandler}
@@ -46,7 +46,7 @@ export default function Register({ setAuthState }) {
             />
           </div>
           <div className="mb-3">
-            <label htmlFor="signupPassword" className="form-label">Password</label>
+            <label htmlFor="signupPassword" className="form-label">Пароль</label>
             <input
               value={input.password}
               onChange={changeHandler}
@@ -57,8 +57,8 @@ export default function Register({ setAuthState }) {
             />
           </div>
           <div className="row justify-content-center">
-            <button type="submit" className="btn btn-outline-success">Sign up</button>
-            {error && <div style={{ color: 'red' }}>This nickname already exists</div>}
+            <button type="submit" className="btn btn-outline-success">Регистрация</button>
+            {error && <div style={{ color: 'red' }}>Эта Почта уже используется</div>}
           </div>
         </form>
       </div>

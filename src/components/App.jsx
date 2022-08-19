@@ -14,7 +14,7 @@ function App({ path, data, userSession }) {
   const [discrFlat, setDiscrFlat] = useState([]);
   console.log(userSession);
   return (
-    <div className="container">
+    <div className="container fw-light">
       <Navbar
         authState={authState}
         setAuthState={setAuthState}

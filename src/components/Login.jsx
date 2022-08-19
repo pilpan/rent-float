@@ -38,7 +38,7 @@ export default function Login({ setAuthState }) {
       <div className="col-5">
         <form onSubmit={submitHandler}>
           <div className="mb-3">
-            <label htmlFor="loginName" className="form-label">Email</label>
+            <label htmlFor="loginName" className="form-label">Почта</label>
             <input
               value={input.email}
               onChange={changeHandler}
@@ -49,7 +49,7 @@ export default function Login({ setAuthState }) {
             />
           </div>
           <div className="mb-3">
-            <label htmlFor="loginPassword" className="form-label">Password</label>
+            <label htmlFor="loginPassword" className="form-label">Пароль</label>
             <input
               value={input.password}
               onChange={changeHandler}
@@ -60,9 +60,9 @@ export default function Login({ setAuthState }) {
             />
           </div>
           <div className="row justify-content-center mt-3">
-            <button type="submit" className="btn btn-outline-success">Login</button>
+            <button type="submit" className="btn btn-outline-success">Войти</button>
             {/* <button type="button" onClick={() => setError(true)}>Test</button> */}
-            {error && <div style={{ color: 'red', background: 'yellow' }}>Password is incorrect</div>}
+            {error && <div style={{ color: 'red', background: 'yellow' }}>неверный пароль или почта</div>}
           </div>
         </form>
       </div>
