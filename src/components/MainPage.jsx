@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-
 export default function MainPage({ setDiscrFlat, discrFlat, authState }) {
   const [buttonState, buttonSetState] = useState(true);
   const filtration = -1;
@@ -13,7 +12,8 @@ export default function MainPage({ setDiscrFlat, discrFlat, authState }) {
 
   const addHandler = async (e, id) => {
     e.preventDefault();
-    await fetch(`/favorite/add/${id}`, { method: 'PUT' });
+    const response = await fetch(`/favorite/add/${id}`, { method: 'PUT' });
+    if (response.ok) buttonSetState(false);
   };
   return (
     <div>

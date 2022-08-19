@@ -22,10 +22,13 @@ route.post('/:id', async (req, res) => {
 route.put('/add/:id', async (req, res) => {
   try {
     console.log(req.params.id);
-    console.log(req.session.userId);
-    const {id_user, id_flat} = req.params
-    // const = await favorite.create({id_user: userId, id_flat})
-
+    const newFav = await favorite.create({
+      id_user: req.params.id,
+      id_flat: req.session.userId,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
+    res.sendStatus(200);
   } catch (err) {
     console.error(err);
   }
