@@ -19,5 +19,16 @@ route.post('/:id', async (req, res) => {
     console.error(err);
   }
 });
+route.put('/add/:id', async (req, res) => {
+  try {
+    console.log(req.params.id);
+    console.log(req.session.userId);
+    const {id_user, id_flat} = req.params
+    // const = await favorite.create({id_user: userId, id_flat})
+
+  } catch (err) {
+    console.error(err);
+  }
+});
 
 export default route;

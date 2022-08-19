@@ -2,12 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function MainPage({ setDiscrFlat, discrFlat, authState }) {
+  const [buttonState, buttonSetState] = useState(true);
   const filtration = -1;
   useEffect(() => {
     fetch('http://localhost:3000/qwerty')
       .then((res) => res.json())
       .then((data) => setDiscrFlat(data));
   }, []);
+  const addHandler = async (e, id) => {
+    e.preventDefault();
+    await fetch(`/favorite/add/${id}`, { method: 'PUT' });
+  };
   return (
     <div>
       <h1 />
@@ -31,6 +36,7 @@ export default function MainPage({ setDiscrFlat, discrFlat, authState }) {
                 <p className="card-text">{el.descriptions}</p>
                 <p className="card-text">{el.coordinate}</p>
                 <Link to={`/houses/edit/${el.id}`} className="btn btn-primary">Подробнее</Link>
+                <button style={{ disabled: !buttonState }} onClick={(e) => addHandler(e, el.id)} to={`/favorite/add/${el.id}`} type="submit" className="btn btn-success">Добавить в избранное</button>
               </div>
             </div>
           </li>
